@@ -15,11 +15,11 @@ contactForm.addEventListener('submit', (e) => {
     }
     
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/');
+    xhr.open('POST', '/contact');
     xhr.setRequestHeader('content-type','application/json');
     xhr.onload = function() {
         console.log(xhr.responseText);
-        if( xhr.responseText == 'sucess') {
+        if( xhr.responseText == 'success') {
             alert("Thanks for Contact US! We will call you soon");
             name.value = '';
             email.value = '';

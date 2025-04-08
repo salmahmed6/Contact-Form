@@ -11,14 +11,15 @@
 </head>
 <body>
     <div class="form-container">
-        <form class="contact-form">
+        <form class="contact-form" action="http://localhost:5000/contact" method="POST">
             <h2>CONTACT</h2>
-            <input type="text" id="name" placeholder="Full name"></br>
-            <input type="email" id="email" placeholder="Email"></br>
-            <input type="test" id="subject" placeholder="Subject"></br>
-            <textarea id="message" placeholder="message" cols="30" rows="10"></textarea></br>
+            <input type="text" id="name" name="name" placeholder="Full name" required><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required><br>
+            <textarea id="message" name="message" placeholder="Message" cols="30" rows="10" required></textarea><br>
             <input type="submit" class="submit" value="Send Message">
         </form>
+        
     </div>
     
     <script src="./js/app.js"></script>

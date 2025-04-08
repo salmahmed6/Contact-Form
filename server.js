@@ -1,5 +1,6 @@
-const express = require ('express');
-const nodemailer = require ('nodemailer');
+const express = require('express');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -12,7 +13,7 @@ app.get('/', (req,res) => {
     res.sendFile(__dirname + '/public/contactform.html')
 })
 
-app.post('/', (req,res) => {
+app.post('/contact', (req,res) => {
     console.log(req.body);
 
     const transporter = nodemailer.createTransport({
@@ -24,7 +25,7 @@ app.post('/', (req,res) => {
     })
 
     const mailOptions = {
-        from: req.body.email,
+        from:  process.env.USER_EMAIL, // Send to YOUR email address
         to: req.body.email,
         subject: `Message from ${req.body.name}: ${req.body.subject}`,
         text: req.body.message
@@ -36,12 +37,12 @@ app.post('/', (req,res) => {
             res.send('error');
         } else{
             console.log('Email sent: '+ info.response);
-            res.send('sucess')
+            res.send('success') // Fixed the typo from 'sucess' to 'success'
         }
     })
     
 })
 
-app.listen(PORT, ( )=> {
-    console.log(`server is listenning on port ${PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
 })
